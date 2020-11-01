@@ -20,7 +20,7 @@ Installation & upgrading
 
 Extra menus and pages
 ---------------------
-If you want to have multiple main menu items and corresponding pages, just make a copy of this module in your modules_v4 folder. Change the serial number at the end from 1 to 2 and so on. That's all you need to do. You now can set a second menu item and page. You can use this module an unlimited amount of times as long as you give each module a unique name.
+If you want to have multiple main menu items and corresponding pages, just make a copy of this module in your modules_v4 folder. Change the serial number at the end from 1 to 2 and so on. That's all you need to do. You now can set a second menu item and page. You can use this module an unlimited amount of times as long as you give each module an unique name.
 
 Bugs and feature requests
 -------------------------
