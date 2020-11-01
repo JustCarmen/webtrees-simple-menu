@@ -12,7 +12,7 @@ Description
 Would you like to have an easy solution to add an extra mainmenu item and page to your webtrees installation?
 Here it is!
 
-With this module you can set a new menu item and page. It is a simple module, without fancy extras. It is developped to quickly add a new menu item and page to webtrees, that is it. It does not provide the abbility to add submenu items.
+With this module you can set a new menu item and page. It is a simple module, without fancy extras. It is developped to quickly add a new menu item and page to webtrees, that is it. It does not provide the abbility to add submenu items or different pages per language.
 
 Installation & upgrading
 ------------------------
