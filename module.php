@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace JustCarmen\Webtrees\Module;
+namespace JustCarmen\Webtrees\Module\SimpleMenu;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
