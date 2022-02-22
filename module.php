@@ -9,9 +9,11 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
+use Aura\Router\RouterContainer;
 use Fisharebest\Webtrees\FlashMessages;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleMenuTrait;
 use Fisharebest\Webtrees\Module\ModuleConfigTrait;
@@ -24,11 +26,13 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ModulesMenusAction;
 /**
  * Anonymous class - provide a custom menu option and page
  */
-return new class extends AbstractModule implements ModuleCustomInterface, ModuleMenuInterface, ModuleConfigInterface
+return new class extends AbstractModule implements ModuleCustomInterface, ModuleMenuInterface, ModuleConfigInterface, RequestHandlerInterface
 {
     use ModuleCustomTrait;
     use ModuleMenuTrait;
     use ModuleConfigTrait;
+
+    protected const ROUTE_URL   = '/tree/{tree}/{menu}/{page}';
 
      /**
      * @var string
@@ -124,6 +128,12 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
      */
     public function boot(): void
     {
+        $router_container = app(RouterContainer::class);
+        assert($router_container instanceof RouterContainer);
+
+        $router_container->getMap()
+            ->get(static::class, static::ROUTE_URL, $this);
+
         // Register a namespace for our views.
         View::registerNamespace($this->name(), $this->resourcesFolder() . 'views/');
     }
@@ -199,13 +209,14 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
             return '';
         }
 
-        $url = route('module', [
-            'module' => $this->name(),
-            'action' => 'Page',
-            'tree'   => $tree ? $tree->name() : null,
-        ]);
-
+        $page_title = $this->getPreference('page-title');
         $menu_title = $this->getPreference('menu-title');
+
+        $url = route(static::class, [
+            'tree' => $tree->name(),
+            'menu' => $this->getslug($menu_title),
+            'page' => $this->getslug($page_title)
+        ]);
 
         return new Menu($menu_title, e($url), 'jc-simple-menu-' . e(strtolower($menu_title)));
     }
@@ -215,7 +226,7 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
      *
      * @return ResponseInterface
      */
-    public function getPageAction(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
@@ -233,4 +244,11 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
         ]);
     }
 
+     /**
+     * Get the url slug for this page
+     */
+    public function getSlug($string): String
+    {
+        return preg_replace('/\s+/', '-', strtolower(preg_replace("/&([a-z])[a-z]+;/i", "$1", htmlentities($string))));
+    }
 };
