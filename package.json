@@ -1,14 +1,15 @@
 {
   "private": true,
   "scripts": {
-    "distribution": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    "distribution": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "archive": "npm run distribution && cross-env process.env.section=archive NODE_ENV=production node_modules/webpack/bin/webpack.js --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
-    "clean-webpack-plugin": "^3.0.0",
-    "filemanager-webpack-plugin": "^2.0.5",
-    "laravel-mix": "^5.0.5",
+    "clean-webpack-plugin": "^4.0.0",
+    "filemanager-webpack-plugin": "^6.1.7",
+    "laravel-mix": "^6.0.43",
     "laravel-mix-clean": "^0.1.0",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12"
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2"
   }
 }
