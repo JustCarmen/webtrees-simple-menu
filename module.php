@@ -86,17 +86,10 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
     /**
      * {@inheritDoc}
      * @see \Fisharebest\Webtrees\Module\ModuleCustomInterface::customModuleVersion()
-     *
-     * We use a system where the version number is equal to the latest version of webtrees
-     * Interim versions get an extra sub number
-     *
-     * The dev version is always one step above the latest stable version of this module
-     * The subsequent stable version depends on the version number of the latest stable version of webtrees
-     *
      */
     public function customModuleVersion(): string
     {
-        return '1.0';
+        return '1.1-dev';
     }
 
     /**
