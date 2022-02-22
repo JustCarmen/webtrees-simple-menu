@@ -30,6 +30,25 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
     use ModuleMenuTrait;
     use ModuleConfigTrait;
 
+     /**
+     * @var string
+     */
+    public const CUSTOM_AUTHOR = 'JustCarmen';
+
+    /**
+     * @var string
+     */
+    public const CUSTOM_VERSION = '1.1-dev';
+     /**
+     * @var string
+     */
+    public const GITHUB_REPO = 'webtrees-simple-menu';
+
+     /**
+     * @var string
+     */
+    public const AUTHOR_WEBSITE = 'https://justcarmen.nl';
+
     /**
      * How should this module be identified in the control panel, etc.?
      *
@@ -59,7 +78,7 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
      */
     public function customModuleAuthorName(): string
     {
-        return 'JustCarmen';
+        return self::CUSTOM_AUTHOR;
     }
 
     /**
@@ -68,7 +87,7 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
      */
     public function customModuleVersion(): string
     {
-        return '1.1-dev';
+        return self::CUSTOM_VERSION;
     }
 
     /**
@@ -78,7 +97,26 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
      */
     public function customModuleLatestVersionUrl(): string
     {
-        return 'https://raw.githubusercontent.com/JustCarmen/webtrees-simple-menu/master/latest-version.txt';
+        return 'https://raw.githubusercontent.com/' . self::CUSTOM_AUTHOR . '/' . self::GITHUB_REPO . '/main/latest-version.txt';
+    }
+
+    /**
+     * Fetch the latest version of this module.
+     *
+     * @return string
+     */
+    public function customModuleLatestVersion(): string
+    {
+        return 'https://github.com/' . self::CUSTOM_AUTHOR . '/' . self::GITHUB_REPO . '/releases/latest';
+    }
+
+     /**
+     * {@inheritDoc}
+     * @see \Fisharebest\Webtrees\Module\ModuleCustomInterface::customModuleSupportUrl()
+     */
+    public function customModuleSupportUrl(): string
+    {
+        return self::AUTHOR_WEBSITE;
     }
 
     /**
