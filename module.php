@@ -42,7 +42,7 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
     /**
      * @var string
      */
-    public const CUSTOM_VERSION = '1.1-dev';
+    public const CUSTOM_VERSION = '1.1';
      /**
      * @var string
      */
