@@ -32,7 +32,7 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
     use ModuleMenuTrait;
     use ModuleConfigTrait;
 
-    protected const ROUTE_URL   = '/tree/{tree}/{menu}/{page}';
+    protected const ROUTE_URL   = '/tree/{tree}/simple-menu/{menu}';
 
      /**
      * @var string
