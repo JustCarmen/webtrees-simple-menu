@@ -24,10 +24,9 @@ If you want to have multiple main menu items and corresponding pages, just make 
 
 Bugs and feature requests
 -------------------------
-This is a simple module and provided as is. If it doesn't work in your case or does not fullfill your wishes then you are simply out of luck. I do not provide any support on this module.
-
-It is my intention to keep the module up to date with webtrees.
+This is a simple module and provided as is. However, if you If you experience any bugs you can [create a new issue on GitHub][4]. Since this is a simple module, I will be reluctant to accept feature requests.
 
  [1]: https://github.com/JustCarmen/webtrees-simple-menu/releases/latest
  [2]: https://webtrees.github.io/download/
  [3]: https://github.com/JustCarmen/webtrees-simple-menu/releases/download/1.0/jc-simple-menu-1.zip
+ [4]: https://github.com/JustCarmen/webtrees-simple-menu/issues?state=open
