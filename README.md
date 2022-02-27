@@ -24,7 +24,7 @@ If you want to have multiple main menu items and corresponding pages, just make 
 
 Bugs and feature requests
 -------------------------
-This is a simple module and provided as is. However, if you If you experience any bugs you can [create a new issue on GitHub][4]. Since this is a simple module, I will be reluctant to accept feature requests.
+This is a simple module and provided as is. However, If you experience any bugs you can [create a new issue on GitHub][4]. Since this is a simple module, I will be reluctant to accept feature requests.
 
  [1]: https://github.com/JustCarmen/webtrees-simple-menu/releases/latest
  [2]: https://webtrees.github.io/download/
