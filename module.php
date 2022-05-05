@@ -32,7 +32,7 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
     use ModuleMenuTrait;
     use ModuleConfigTrait;
 
-    protected const ROUTE_URL   = '/tree/{tree}/simple-menu/{menu}';
+    protected const ROUTE_URL   = '/tree/{tree}/{module}/{menu}/{page}';
 
      /**
      * @var string
@@ -158,7 +158,7 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
         $this->layout = 'layouts/administration';
 
         return $this->viewResponse($this->name() . '::edit', [
-            'title' => $this->title(),
+            'title'      => $this->title(),
             'menu_title' => $this->getPreference('menu-title'),
             'page_title' => $this->getPreference('page-title'),
             'page_body'  => $this->getPreference('page-body'),
@@ -213,9 +213,10 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
         $menu_title = $this->getPreference('menu-title');
 
         $url = route(static::class, [
-            'tree' => $tree->name(),
-            'menu' => $this->getslug($menu_title),
-            'page' => $this->getslug($page_title)
+            'tree'   => $tree->name(),
+            'module' => $this->name(),
+            'menu'   => $this->getslug($menu_title),
+            'page'   => $this->getslug($page_title)
         ]);
 
         return new Menu($menu_title, e($url), 'jc-simple-menu-' . e(strtolower($menu_title)));
