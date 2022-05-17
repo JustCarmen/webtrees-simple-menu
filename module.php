@@ -9,7 +9,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
-use Aura\Router\RouterContainer;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\FlashMessages;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -32,7 +32,7 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
     use ModuleMenuTrait;
     use ModuleConfigTrait;
 
-    protected const ROUTE_URL   = '/tree/{tree}/{module}/{menu}/{page}';
+    protected const ROUTE_URL   = '/tree/{tree}/jc-simple-menu-1/{menu}';
 
      /**
      * @var string
@@ -128,10 +128,7 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
      */
     public function boot(): void
     {
-        $router_container = app(RouterContainer::class);
-        assert($router_container instanceof RouterContainer);
-
-        $router_container->getMap()
+        Registry::routeFactory()->routeMap()
             ->get(static::class, static::ROUTE_URL, $this);
 
         // Register a namespace for our views.
@@ -209,14 +206,11 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
             return '';
         }
 
-        $page_title = $this->getPreference('page-title');
         $menu_title = $this->getPreference('menu-title');
 
         $url = route(static::class, [
             'tree'   => $tree->name(),
-            'module' => $this->name(),
-            'menu'   => $this->getslug($menu_title),
-            'page'   => $this->getslug($page_title)
+            'menu'   => $this->getslug($menu_title)
         ]);
 
         return new Menu($menu_title, e($url), 'jc-simple-menu-' . e(strtolower($menu_title)));
