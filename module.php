@@ -36,7 +36,7 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
 
      // Module constants
     public const CUSTOM_AUTHOR = 'JustCarmen';
-    public const CUSTOM_VERSION = '1.1';
+    public const CUSTOM_VERSION = '1.2';
     public const GITHUB_REPO = 'webtrees-simple-menu';
     public const AUTHOR_WEBSITE = 'https://justcarmen.nl';
 
