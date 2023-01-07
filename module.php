@@ -34,23 +34,10 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
 
     protected const ROUTE_URL   = '/tree/{tree}/jc-simple-menu-1/{menu}';
 
-     /**
-     * @var string
-     */
+     // Module constants
     public const CUSTOM_AUTHOR = 'JustCarmen';
-
-    /**
-     * @var string
-     */
     public const CUSTOM_VERSION = '1.1';
-     /**
-     * @var string
-     */
     public const GITHUB_REPO = 'webtrees-simple-menu';
-
-     /**
-     * @var string
-     */
     public const AUTHOR_WEBSITE = 'https://justcarmen.nl';
 
     /**
