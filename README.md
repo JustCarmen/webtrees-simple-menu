@@ -22,6 +22,10 @@ Extra menus and pages
 ---------------------
 If you want to have multiple main menu items and corresponding pages, just make a copy of this module in your modules_v4 folder. Change the serial number at the end from 1 to 2 and so on. Open the file module.php in a text editor like notepad and search for ROUTE_URL near the top of the file. In this link the module name is hardcoded to prevent conflicts with other modules. Change the module filename and be sure it is equal to the folder name. That's all you need to do. You now can set a second menu item and page. You can use this module an unlimited amount of times as long as you give each module a unique name. You should be aware that you need to repeat these steps after each upgrade. You will not loose your settings after an upgrade as long as you give the new version of the module the same name as before.
 
+Translation
+-----------
+This module contains a few translatable textstrings. Copy the file nl.php into the resources/lang folder and replace the Dutch text with the translation into your own language. Use the official two-letter language code as file name. Look in the webtrees folder resources/lang to find the correct code.
+
 Bugs and feature requests
 -------------------------
 This is a simple module and provided as is. However, if you experience any bugs you can [create a new issue on GitHub][3]. Since this is a simple module, I will be reluctant to accept feature requests.
