@@ -18,7 +18,7 @@ const dist_dir = 'dist/jc-simple-menu-1';
 
 mix
   .setPublicPath('./dist')
-  .copyDirectory('resources/views', dist_dir + '/resources/views')
+  .copyDirectory('resources', dist_dir + '/resources')
   .copy('module.php', dist_dir)
   .copy('LICENSE.md', dist_dir)
   .copy('README.md', dist_dir)
