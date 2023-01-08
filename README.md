@@ -16,7 +16,7 @@ With this module you can set a new menu item and page. It is a simple module, wi
 
 Installation & upgrading
 ------------------------
-[Download][1] and unpack the zip file and place the folder jc-simple-menu-1 in the modules_v4 folder of webtrees. Upload the newly added folder to your server. It is activated by default. Go to the control panel, click in the module section on 'Menus' where you can find the newly added menu item. You can move it up or down to change the menu order. Click on the tools icon next to the title of the newly added menu item. This will open the settings page where you can set a menu title and add the page title and text.
+[Download][1] and unpack the zip file and place the folder jc-simple-menu-1 in the modules_v4 folder of webtrees. Upload the newly added folder to your server. It is activated by default. Go to the control panel, click in the module section on 'Menus' where you can find the newly added menu item. You can move it up or down to change the order. Click on the tools icon next to the title of the newly added menu item. This will open the settings page where you can set a menu title and add the page title and text.
 
 Extra menus and pages
 ---------------------
