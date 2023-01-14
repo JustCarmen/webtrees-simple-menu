@@ -33,7 +33,7 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
     use ModuleMenuTrait;
     use ModuleConfigTrait;
 
-    protected const ROUTE_URL   = '/tree/{tree}/jc-simple-menu-{menu}/{page}';
+    protected const ROUTE_URL   = '/tree/{tree}/jc-simple-menu-1/{menu}';
 
      // Module constants
     public const CUSTOM_AUTHOR = 'JustCarmen';
@@ -195,12 +195,10 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
         }
 
         $menu_title = $this->getPreference('menu-title');
-        $page_title = $this->getPreference('page-title');
 
         $url = route(static::class, [
             'tree'   => $tree->name(),
-            'menu'  => $this->getSlug($menu_title),
-            'page'   => $this->getslug($page_title)
+            'menu'   => $this->getSlug($menu_title)
         ]);
 
         return new Menu($menu_title, e($url), 'jc-simple-menu-' . e(strtolower($menu_title)));

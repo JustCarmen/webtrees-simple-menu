@@ -20,7 +20,7 @@ Installation & upgrading
 
 Extra menus and pages
 ---------------------
-If you want to have multiple main menu items and associated pages, just make a copy of this module in your modules_v4 folder. Change the serial number at the end from 1 to 2 and so on. You can use this module indefinitely, as long as you give each module a unique name. Keep in mind that you must repeat this step after each upgrade. You will not lose your settings after an upgrade as long as you give the new version of the module the same folder name as before.
+If you want to have multiple main menu items and associated pages, just make a copy of this module in your modules_v4 folder. Change the serial number at the end from 1 to 2 and so on. Open the file module.php in a text editor like notepad and search for ROUTE_URL near the top of the file. In this link the page type (jc-simple-menu-1) is hardcoded to prevent conflicts with other modules or another copy of this module. Change the serial number at the end of the page type accordingly to make it unique. You can use this module indefinitely, as long as you give each module and ROUTE_URL a unique name. Keep in mind that you must repeat this step after each upgrade. You will not lose your settings after an upgrade as long as you give the new version of the module the same folder name as before.
 
 Translation
 -----------
