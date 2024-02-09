@@ -195,7 +195,7 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
             'menu'   => $this->getSlug($menu_title)
         ]);
 
-        return new Menu($menu_title, e($url), 'jc-simple-menu-' . e(strtolower($menu_title)));
+        return new Menu($menu_title, e($url), str_replace("_", "", $this->name()));
     }
 
      /**
