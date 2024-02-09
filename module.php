@@ -50,7 +50,11 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
     public function title(): string
     {
         /* I18N: Name of a module */
-        return $this->getPreference('menu-title', I18N::translate('Simple menu module'));
+        if ($this->getPreference('menu-title')){
+            return I18N::translate('Simple menu module') . ' - ' . $this->getPreference('menu-title');
+        } else {
+            return I18N::translate('Simple menu module');
+        }
     }
 
     /**
