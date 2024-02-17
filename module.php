@@ -19,19 +19,22 @@ use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleMenuTrait;
 use Fisharebest\Webtrees\Module\ModuleConfigTrait;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
+use Fisharebest\Webtrees\Module\ModuleGlobalTrait;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
+use Fisharebest\Webtrees\Module\ModuleGlobalInterface;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesMenusAction;
 
 /**
  * Anonymous class - provide a custom menu option and page
  */
-return new class extends AbstractModule implements ModuleCustomInterface, ModuleMenuInterface, ModuleConfigInterface, RequestHandlerInterface
+return new class extends AbstractModule implements ModuleCustomInterface, ModuleMenuInterface, ModuleConfigInterface, ModuleGlobalInterface, RequestHandlerInterface
 {
     use ModuleCustomTrait;
     use ModuleMenuTrait;
     use ModuleConfigTrait;
+    use ModuleGlobalTrait;
 
     protected const ROUTE_URL   = '/tree/{tree}/jc-simple-menu-1/{menu}';
 
@@ -127,6 +130,38 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
         return __DIR__ . '/resources/';
     }
 
+    /**
+     * Raw content, to be added at the end of the <head> element.
+     * Typically, this will be <link> and <meta> elements.
+     *
+     * @return string
+     */
+    public function headContent(): string
+    {
+        return
+            '<style>
+            .wt-theme-clouds .' . $this->name() . ' .nav-link:before {
+                content: url(' . $this->assetUrl('icons/menu-icon-clouds.png') . ');
+            }
+
+            .wt-theme-colors .' . $this->name() . ' .nav-link:before {
+                content: url(' . $this->assetUrl('icons/menu-icon-colors.png') . ');
+            }
+
+            .wt-theme-webtrees .' . $this->name() . ' .nav-link:before {
+                content: url(' . $this->assetUrl('icons/menu-icon-webtrees.png') . ');
+            }
+
+            .wt-theme-xenea .' . $this->name() . ' .nav-link:before {
+                content: url(' . $this->assetUrl('icons/menu-icon-xenea.png') . ');
+            }
+
+            .wt-theme-_myartjaub_ruraltheme_ .' . $this->name() . ' .nav-link:before {
+                content: url(' . $this->assetUrl('icons/menu-icon-rural.png') . ');
+            }
+            </style>';
+    }
+
      /**
      * @param ServerRequestInterface $request
      *
@@ -195,7 +230,7 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
             'menu'   => $this->getSlug($menu_title)
         ]);
 
-        return new Menu($menu_title, e($url), str_replace("_", "", $this->name()));
+        return new Menu($menu_title, e($url), $this->name());
     }
 
      /**
