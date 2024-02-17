@@ -18,6 +18,10 @@ Installation & upgrading
 ------------------------
 [Download][1] and unpack the zip file and place the folder jc-simple-menu-1 in the modules_v4 folder of webtrees. Upload the newly added folder to your server. It is activated by default. Go to the control panel, click in the module section on 'Menus' where you can find the newly added menu item. You can move it up or down to change the order. Click on the tools icon next to the title of the newly added menu item. This will open the settings page where you can set a menu title and add the page title and text.
 
+Menu icons
+----------
+The module comes with a set of menu icons for all standard webtrees themes and the rural theme. You can use these icons or replace them with your own. The icons are located in the folder resources/icons.
+
 Extra menus and pages
 ---------------------
 If you want to have multiple main menu items and associated pages, just make a copy of this module in your modules_v4 folder. Change the serial number at the end from 1 to 2 and so on. Open the file module.php in a text editor like notepad and search for ROUTE_URL near the top of the file. In this link the page type (jc-simple-menu-1) is hardcoded to prevent conflicts with other modules or another copy of this module. Change the serial number at the end of the page type accordingly to make it unique. You can use this module indefinitely, as long as you give each module and ROUTE_URL a unique name. Keep in mind that you must repeat this step after each upgrade. You will not lose your settings after an upgrade as long as you give the new version of the module the same folder name as before.
