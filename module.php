@@ -36,7 +36,7 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
     use ModuleConfigTrait;
     use ModuleGlobalTrait;
 
-    protected const ROUTE_URL   = '/tree/{tree}/jc-simple-menu-1/{menu}';
+    protected const ROUTE_URL   = '/tree/{tree}/jc-simple-menu-1';
 
      // Module constants
     public const CUSTOM_AUTHOR = 'JustCarmen';
@@ -253,14 +253,6 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
             'page_title'    => $page_title,
             'page_body'     => $page_body
         ]);
-    }
-
-     /**
-     * Get the url slug for this page
-     */
-    public function getSlug($string): String
-    {
-        return preg_replace('/\s+/', '-', strtolower(preg_replace("/&([a-z])[a-z]+;/i", "$1", htmlentities($string))));
     }
 
     /**
