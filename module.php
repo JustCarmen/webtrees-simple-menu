@@ -220,14 +220,13 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
     public function getMenu(Tree $tree): ?Menu
     {
         if ($tree === null) {
-            return '';
+            return null;
         }
 
         $menu_title = $this->getPreference('menu-title');
 
         $url = route(static::class, [
-            'tree'   => $tree->name(),
-            'menu'   => $this->getSlug($menu_title)
+            'tree'   => $tree->name()
         ]);
 
         return new Menu($menu_title, e($url), $this->name());
@@ -248,7 +247,7 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
 
         return $this->viewResponse($this->name() . '::page', [
             'tree'          => $tree,
-            'title'         => $this->title(),
+            'title'         => $page_title,
             'module'        => $this->name(),
             'is_admin'      => Auth::isAdmin(),
             'page_title'    => $page_title,
