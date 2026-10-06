@@ -36,7 +36,7 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
     use ModuleConfigTrait;
     use ModuleGlobalTrait;
 
-    protected const ROUTE_URL   = '/tree/{tree}/jc-simple-menu-1/{menu}';
+    protected const ROUTE_URL   = '/tree/{tree}/jc-simple-menu-1';
 
      // Module constants
     public const CUSTOM_AUTHOR = 'JustCarmen';
@@ -53,8 +53,8 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
     public function title(): string
     {
         /* I18N: Name of a module */
-        if ($this->getPreference('menu-title')){
-            return I18N::translate('Simple menu module') . ' - ' . $this->getPreference('menu-title');
+        if ($this->getPreference('page-title')){
+            return I18N::translate('Simple menu module') . ' - ' . $this->getPreference('page-title');
         } else {
             return I18N::translate('Simple menu module');
         }
@@ -220,14 +220,13 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
     public function getMenu(Tree $tree): ?Menu
     {
         if ($tree === null) {
-            return '';
+            return null;
         }
 
         $menu_title = $this->getPreference('menu-title');
 
         $url = route(static::class, [
-            'tree'   => $tree->name(),
-            'menu'   => $this->getSlug($menu_title)
+            'tree'   => $tree->name()
         ]);
 
         return new Menu($menu_title, e($url), $this->name());
@@ -248,20 +247,12 @@ return new class extends AbstractModule implements ModuleCustomInterface, Module
 
         return $this->viewResponse($this->name() . '::page', [
             'tree'          => $tree,
-            'title'         => $this->title(),
+            'title'         => $page_title,
             'module'        => $this->name(),
             'is_admin'      => Auth::isAdmin(),
             'page_title'    => $page_title,
             'page_body'     => $page_body
         ]);
-    }
-
-     /**
-     * Get the url slug for this page
-     */
-    public function getSlug($string): String
-    {
-        return preg_replace('/\s+/', '-', strtolower(preg_replace("/&([a-z])[a-z]+;/i", "$1", htmlentities($string))));
     }
 
     /**
